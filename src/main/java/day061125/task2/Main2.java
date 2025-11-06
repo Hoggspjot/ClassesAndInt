@@ -9,7 +9,6 @@ public class Main2 {
     }
 }
 
-
 interface Animal {
     void voice();
 
@@ -23,5 +22,10 @@ class Dog implements Animal {
     @Override
     public void voice() {
         System.out.println("Woof");
+    }
+
+    @Override
+    public void sleep() {
+        System.out.println("Dog is sleeping");
     }
 }
