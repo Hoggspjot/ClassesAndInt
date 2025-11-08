@@ -11,16 +11,11 @@ public class Main {
     public static void main(String[] args) {
         List<String> data = readInput();
         String result;
-        List<String> sorted = data.stream().sorted().collect(Collectors.toList());
-        StringBuilder sb = new StringBuilder();
 
-        for (int i = 0; i < sorted.size(); i++) {
-            sb.append(sorted.get(i));
-            if (i != sorted.size()-1) {
-                sb.append(", ");
-            }
-        }
-        result = sb.toString();
+        Collections.sort(data);
+
+        result = String.join(", ", data);
+
         System.out.println(result);
     }
 
