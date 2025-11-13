@@ -9,22 +9,20 @@ public class Main {
         List<String> tags = readInput();
         String result ="";
 
-        Map<String, Integer> map = new LinkedHashMap<>();
+        result = tags.stream()
+                        .collect(Collectors.groupingBy(
+                                tag -> tag,
+                                LinkedHashMap::new,
+                                Collectors.counting()
+                        ))
+                                .entrySet()
+                                .stream()
+                                .map(entry -> entry.getKey()+": "+ entry.getValue())
+                                .collect(Collectors.joining(", "));
 
 
 
-        for (int i = 0; i < tags.size(); i++) {
-            if (map.get(tags.get(i)) == null) {
-                map.put(tags.get(i), 1);
-            } else {
-                map.put(tags.get(i), map.get(tags.get(i)) + 1);
-            }
-        }
 
-        for (Map.Entry<String, Integer> entry : map.entrySet()) {
-            result += entry.getKey() + ": " + entry.getValue() + ", ";
-        }
-        result = result.substring(0, result.length() - 2);
         System.out.println(result);
     }
 
