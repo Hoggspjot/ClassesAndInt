@@ -17,14 +17,13 @@ public class Main {
     }
 
     public static int findMinNumber(List<List<Integer>> data) {
-        int min = Integer.MAX_VALUE;
-        for (int i = 0; i < data.size(); i++) {
-            int tmp = Collections.min(data.get(i));
-            if (tmp < min) {
-                min = tmp;
-            }
-        }
-        return min;
+
+        int result = data.stream()
+                .flatMap(List::stream)
+                .mapToInt(Integer::intValue)
+                .min()
+                .orElse(Integer.MAX_VALUE);
+        return result;
     }
 
     public static List<List<Integer>> readInput() {
