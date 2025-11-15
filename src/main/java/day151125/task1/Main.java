@@ -19,10 +19,9 @@ public class Main {
     public static int findMinNumber(List<List<Integer>> data) {
         int min = Integer.MAX_VALUE;
         for (int i = 0; i < data.size(); i++) {
-            for (int j = 0; j < data.get(i).size(); j++) {
-                if (data.get(i).get(j) < min) {
-                    min = data.get(i).get(j);
-                }
+            int tmp = Collections.min(data.get(i));
+            if (tmp < min) {
+                min = tmp;
             }
         }
         return min;
