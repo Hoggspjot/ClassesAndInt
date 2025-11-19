@@ -5,6 +5,7 @@ import com.google.gson.reflect.TypeToken;
 
 import java.lang.reflect.Type;
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class Main {
     public static void main(String[] args) {
@@ -16,7 +17,12 @@ public class Main {
     }
 
     public static String moveItems(int n, List<Integer> items) {
+        List<Integer> newList = items.subList(n, items.size());
+        for (int i = 0; i < n; i++) {
+            newList.add(items.get(i));
+        }
 
+        return newList.stream().map(String::valueOf).collect(Collectors.joining(", "));
     }
 
     public static Pair<Integer, List<Integer>> readInput() {
