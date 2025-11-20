@@ -5,6 +5,7 @@ import com.google.gson.reflect.TypeToken;
 
 import java.lang.reflect.Type;
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class Main {
     public static void main(String[] args) {
@@ -17,6 +18,7 @@ public class Main {
 
     public static String multiplyAndSortList(List<Integer> data, int n) {
 
+        return data.stream().map(x -> x * n).sorted().map(String::valueOf).collect(Collectors.joining(", "));
     }
 
     public static Pair<Integer, List<Integer>> readInput() {
@@ -49,3 +51,11 @@ class Pair<F, S> {
         return second;
     }
 }
+
+
+/*У вас есть переменные n, data которые содержат входные пользовательские данные.
+
+data - список из элементов целых чисел.
+
+Напишите код, который умножает каждый элемент списка на значение переменной
+ n и записывает отсортированный результат в порядке возрастания в виде строки через запятую в переменную result.*/
