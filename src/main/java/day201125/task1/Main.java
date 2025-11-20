@@ -18,7 +18,10 @@ public class Main {
 
     public static String multiplyAndSortList(List<Integer> data, int n) {
 
-        return data.stream().map(x -> x * n).sorted().map(String::valueOf).collect(Collectors.joining(", "));
+        return data.stream()
+                .map(x -> x * n)
+                .sorted().map(String::valueOf)
+                .collect(Collectors.joining(", "));
     }
 
     public static Pair<Integer, List<Integer>> readInput() {
