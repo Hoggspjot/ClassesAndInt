@@ -16,17 +16,12 @@ public class Main {
     }
 
     public static int increasePower(int power, List<String> items) {
-        for (String s : items) {
-            if (s.equals("Зелье")) {
-                power += 10;
-            }
-        }
-        if (power < 100) {
-            return power;
-        } else {
-            power = 100;
-            return power;
-        }
+
+        long count = items.stream()
+                .filter("Зелье"::equals)
+                .count();
+        int result = power + (int) count * 10;
+        return Math.min(result, 100);
     }
 
     public static Pair<Integer, List<String>> readInput() {
