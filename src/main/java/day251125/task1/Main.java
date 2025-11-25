@@ -3,6 +3,7 @@ package day251125.task1;
 import com.google.gson.Gson;
 import java.util.*;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class Main {
     public static void main(String[] args) {
@@ -15,35 +16,33 @@ public class Main {
     }
 
     public static String fillArray(int size, String position, List<Integer> data) {
-        if (!(position.equals("left") || position.equals("right"))) {
+        if (!"left".equals(position) && !"right".equals(position)) {
             return "Неверная позиция";
-        } else if (data.size() > size) {
+        }
+
+        if (data.size() > size) {
             return "Неверный размер";
         }
-        List<Integer> newList = new ArrayList<>();
         if (size == data.size()) {
-            return data.stream().map(String::valueOf).collect(Collectors.joining(", "));
+            return format(data);
         }
-        if (position.equals("left")) {
-            for (int i = 0; i < size; i++) {
-                if (i < size - data.size()) {
-                    newList.add(0);
-                } else {
-                    newList.addAll(data);
-                    break;
-                }
-            }
+
+        int zero = size - data.size();
+        List<Integer> numZero = Collections.nCopies(zero, 0);
+
+        List<Integer> result;
+        if ("left".equals(position)) {
+            result = Stream.concat(numZero.stream(), data.stream())
+                    .collect(Collectors.toList());
+        } else {
+            result = Stream.concat(data.stream(), numZero.stream())
+                    .collect(Collectors.toList());
         }
-        if (position.equals("right")) {
-            for (int i = 0; i < size; i++) {
-                if (data.size() > i) {
-                    newList.add(data.get(i));
-                } else {
-                    newList.add(0);
-                }
-            }
-        }
-        return newList.stream().map(String::valueOf).collect(Collectors.joining(", "));
+        return format(result);
+    }
+
+    public static String format(List<Integer> list) {
+        return list.stream().map(String::valueOf).collect(Collectors.joining(", "));
     }
 
     public static Triple<Integer, String, List<Integer>> readInput() {
