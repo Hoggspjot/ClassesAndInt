@@ -3,25 +3,21 @@ package day271125.task2;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import java.util.*;
-import java.util.stream.Collectors;
+
 
 public class Main {
     public static void main(String[] args) {
         List<String> data = readInput();
         StringBuilder result = new StringBuilder();
-
-        Map<String, Integer> map = new HashMap<>();
-        for (String s : data) {
-            if (map.get(s) != null) {
-                map.put(s, map.get(s) + 1);
-            } else {
-                map.put(s, 1);
+        int count = 1;
+        for (int i = 0; i < data.size(); i++) {
+            if ((i + 1) < data.size() && data.get(i).equals(data.get(i + 1))) {
+                count++;
+            }else {
+                result.append(data.get(i)).append(count);
+                count = 1;
             }
         }
-        for (Map.Entry<String, Integer> entry : map.entrySet()) {
-            result.append(entry.getKey()).append(entry.getValue());
-        }
-
         System.out.println(result);
     }
 
