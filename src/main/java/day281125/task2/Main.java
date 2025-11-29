@@ -12,12 +12,21 @@ public class Main {
         int end = input.getThird();
         int result = 0;
 
-
-        List<Integer> newList = data.subList(start -1 , end+1);
-        for (Integer x : newList) {
-            result += x;
+        if (end < start) {
+            result = 0;
+        } else {
+            int first = data.indexOf(start);
+            int last = data.lastIndexOf(end);
+            if (last == -1) {
+                result = 0;
+            } else {
+                List<Integer> newList = data.subList(first, last + 1);
+                for (Integer x : newList) {
+                    result += x;
+                }
+            }
         }
-        System.out.println(newList);
+
 
         System.out.println(result);
     }
