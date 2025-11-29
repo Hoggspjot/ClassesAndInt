@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import java.util.*;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 
 public class Main {
@@ -14,11 +15,7 @@ public class Main {
     }
 
     public static List<Integer> mirrorArray(List<Integer> data) {
-        List<Integer> newList = new ArrayList<>(data);
-        for (int i = data.size() - 2; i >= 0; i--) {
-            newList.add(data.get(i));
-        }
-        return newList;
+        return Stream.concat(data.stream(), data.stream().sorted(Collections.reverseOrder()).skip(1)).toList();
     }
 
     public static String convertToString(List<Integer> arr) {
