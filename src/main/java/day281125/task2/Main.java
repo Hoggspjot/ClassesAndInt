@@ -12,20 +12,7 @@ public class Main {
         int end = input.getThird();
         int result = 0;
 
-        if (end < start) {
-            result = 0;
-        } else {
-            int first = data.indexOf(start);
-            int last = data.lastIndexOf(end);
-            if (last == -1) {
-                result = 0;
-            } else {
-                List<Integer> newList = data.subList(first, last + 1);
-                for (Integer x : newList) {
-                    result += x;
-                }
-            }
-        }
+        result = data.stream().filter(s -> s >= start && s <= end).mapToInt(Integer::intValue).sum();
 
 
         System.out.println(result);
