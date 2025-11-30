@@ -12,7 +12,21 @@ public class Main {
     }
 
     public static List<Integer> replaceZeroWithSum(List<Integer> data) {
+        List<Integer> newList = new ArrayList<>();
+        for (int i = 0; i < data.size(); i++) {
+            if (data.get(i) == 0) {
+                if (i - 2 >= 0) {
+                    newList.add(i, newList.get(i - 1) + newList.get(i - 2));
+                } else {
+                    newList.add(0);
+                }
+            } else {
+                newList.add(data.get(i));
+            }
 
+
+        }
+        return newList;
     }
 
     public static List<Integer> readInput() {
