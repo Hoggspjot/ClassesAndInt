@@ -14,7 +14,7 @@ public class Main {
 
     public static List<Integer> filterAboveAverage(List<Integer> data) {
         int sum = data.stream().mapToInt(Integer::intValue).sum();
-        double avg = sum / data.size();
+        double avg = (double) sum / data.size();
         return data.stream().filter(x -> x > avg).collect(Collectors.toList());
     }
 
