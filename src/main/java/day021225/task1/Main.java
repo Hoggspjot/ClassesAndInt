@@ -3,6 +3,9 @@ package day021225.task1;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+
 
 public class Main {
     public static void main(String[] args) {
@@ -12,13 +15,11 @@ public class Main {
     }
 
     public static List<Integer> getGreaterThanPrevious(List<Integer> data) {
-        List<Integer> newList = new ArrayList<>();
-        for (int i = 1; i < data.size(); i++) {
-                if (data.get(i) > data.get(i - 1)) {
-                    newList.add(data.get(i));
-                }
-        }
-        return newList;
+
+        return IntStream.range(1, data.size())
+                .filter(i -> data.get(i) > data.get(i - 1))
+                .mapToObj(data::get)
+                .collect(Collectors.toList());
     }
 
     public static List<Integer> readInput() {
