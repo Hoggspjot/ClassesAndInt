@@ -3,6 +3,8 @@ package day081225.task1;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class Main {
     public static void main(String[] args) {
@@ -12,16 +14,12 @@ public class Main {
     }
 
     public static List<Integer> columnSum(List<List<Integer>> data) {
-        List<Integer> newList = new ArrayList<>();
-        int num = 0;
-        for (int i = 0; i < data.get(0).size(); i++) {
-            for (int j = 0; j < data.size(); j++) {
-                num += data.get(j).get(i);
-            }
-            newList.add(num);
-            num = 0;
-        }
-        return newList;
+
+        int st = data.get(0).size();
+
+        return IntStream.range(0, st)
+                .mapToObj(n -> data.stream().mapToInt(x -> x.get(n)).sum())
+                .collect(Collectors.toList());
     }
 
     public static List<List<Integer>> readInput() {
