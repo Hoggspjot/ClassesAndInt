@@ -12,18 +12,13 @@ public class Main {
     }
 
     public static String balance(List<Integer> data) {
-        List<Integer> left = data.subList(0, data.size() / 2);
-        List<Integer> right = data.subList(data.size() / 2, data.size());
+        int half = data.size() / 2;
+        int leftWeight = data.stream().limit(half).mapToInt(Integer::intValue).sum();
+        int rightWeight = data.stream().skip(half).mapToInt(Integer::intValue).sum();
 
-        int leftWeight = left.stream().mapToInt(Integer::intValue).sum();
-        int rightWeight = right.stream().mapToInt(Integer::intValue).sum();
-        if (leftWeight > rightWeight) {
-            return "Левая сторона тяжелее";
-        } else if (leftWeight < rightWeight) {
-            return "Правая сторона тяжелее";
-        } else {
-            return "Обе стороны сбалансированы";
-        }
+        return leftWeight == rightWeight ?
+                "Обе стороны сбалансированы" :
+                leftWeight > rightWeight ? "Левая сторона тяжелее" : "Правая сторона тяжелее";
     }
 
     public static List<Integer> readInput() {
