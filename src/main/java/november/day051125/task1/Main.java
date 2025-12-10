@@ -1,4 +1,4 @@
-package november.someTAsk.task1;
+package november.day051125.task1;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;

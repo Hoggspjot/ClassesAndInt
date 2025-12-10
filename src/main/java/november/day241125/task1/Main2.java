@@ -3,7 +3,7 @@ package november.someTAsk.task1;
 import com.google.gson.Gson;
 import java.util.*;
 
-public class Main {
+public class Main2 {
     public static void main(String[] args) {
         List<Boolean> data = readInput();
         boolean result = allFalse(data);
