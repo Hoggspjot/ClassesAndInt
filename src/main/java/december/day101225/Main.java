@@ -12,18 +12,12 @@ public class Main {
     }
 
     public static String countZerosBeforeAndAfter(List<Integer> data) {
-        int first = 0;
-        int num = 0;
-        int second = 0;
-        for (int i = 0; i < data.size(); i++) {
-            if (data.get(i) != 0) {
-                second = data.size() - (i + 1);
-                break;
-            } else {
-                first++;
-            }
-        }
-        return "Количество нулей перед единицей: " + first + ", " + "Количество нулей после единицы: " + second;
+        int first = data.indexOf(1);
+        int second = data.lastIndexOf(1);
+
+        int before = first;
+        int after = data.size() - second - 1;
+        return "Количество нулей перед единицей: " + before + ", " + "Количество нулей после единицы: " + after;
     }
 
     public static List<Integer> readInput() {
