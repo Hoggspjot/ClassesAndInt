@@ -13,15 +13,11 @@ public class Main {
     }
 
     public static List<Integer> generateArray(int length) {
-        List<Integer> list = new ArrayList<>(length);
-        for (int i = 0; i < length; i++) {
-            if (i % 2 == 0) {
-                list.add(1);
-            } else {
-                list.add(i % 3);
-            }
-        }
-        return list;
+        return IntStream.range(0, length)
+                .map(x -> (x % 2 == 0) ? 1 : x % 3)
+                .limit(length)
+                .boxed()
+                .collect(Collectors.toList());
     }
 
     public static int readInput() {
