@@ -13,17 +13,13 @@ public class Main {
     }
 
     public static int findLongestSeries(List<Integer> data) {
-        int count = 0;
-        int result = 0;
+        int count = 1;
+        int result = 1;
         for (int i = 1; i < data.size(); i++) {
             if (data.get(i) > data.get(i - 1)) {
-                if (count == 0) {
-                    count += 2;
-                } else {
                     count++;
-                }
             } else {
-                count = 0;
+                count = 1;
             }
             if (result < count) {
                 result = count;
