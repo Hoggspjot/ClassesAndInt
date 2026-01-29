@@ -1,0 +1,4 @@
+package year25.november.day261125.task2;
+
+public class Main {
+}
