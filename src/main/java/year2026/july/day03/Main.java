@@ -18,12 +18,10 @@ public class Main {
 
         if (num < 0) {
             System.out.println(false);
-        }
-        if (num > 0) {
-            System.out.println(true);
-        }
-        if (num == 0) {
+        } else if (num == 0) {
             System.out.println("Great!");
+        } else {
+            System.out.println(true);
         }
 
 
