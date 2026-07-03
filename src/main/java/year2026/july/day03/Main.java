@@ -19,7 +19,7 @@ public class Main {
         if (num < 0) {
             System.out.println(false);
         }
-        if (num >= 1 && num < 2) {
+        if (num > 0) {
             System.out.println(true);
         }
         if (num == 0) {
