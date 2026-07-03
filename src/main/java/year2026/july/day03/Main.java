@@ -21,5 +21,7 @@ public class Main {
         if (num == 0) {
             System.out.println("Great!");
         }
+
+
     }
 }
