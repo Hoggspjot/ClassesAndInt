@@ -8,6 +8,10 @@ public class Main {
         System.out.println("Введи число");
         try (Scanner scanner = new Scanner((System.in))) {
 
+            while (!scanner.hasNextInt()) {
+                System.out.println("Эй! Это не число!");
+                scanner.next();
+            }
             num = scanner.nextInt();
         }
 
