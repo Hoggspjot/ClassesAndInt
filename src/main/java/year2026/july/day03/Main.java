@@ -8,18 +8,20 @@ public class Main {
         System.out.println("Введи число");
         try (Scanner scanner = new Scanner((System.in))) {
 
+            while (!scanner.hasNextInt()) {
+                System.out.println("Эй! Это не число!");
+                scanner.next();
+            }
             num = scanner.nextInt();
         }
 
 
         if (num < 0) {
             System.out.println(false);
-        }
-        if (num >= 1 && num < 2) {
-            System.out.println(true);
-        }
-        if (num == 0) {
+        } else if (num == 0) {
             System.out.println("Great!");
+        } else {
+            System.out.println(true);
         }
 
 
