@@ -14,16 +14,24 @@ public class Main {
             array[i] = random.nextInt(100) + 1;
             System.out.print(array[i] + " ");
         }
-        int num = middle(array);
         System.out.println("\n--------------------------------------");
+        double num = middle(array);
         System.out.println("Среднее арифметическое равно - "+ num);
+
     }
 
-    public static int middle(int[] array) {
+    public static double middle(int[] array) {
         int sum = 0;
+        int numOfEvens = 0;
         for (int i = 0; i < array.length; i++) {
-            sum += array[i];
+            if (array[i] % 2 == 0) {
+                sum += array[i];
+                numOfEvens++;
+                System.out.print(array[i] + " четное ");
+            }
         }
-        return sum / array.length;
+        System.out.println("\n--------------------------------------");
+        System.out.println("\nКоличество четных числе в массиве - " + numOfEvens + " ");
+        return (double) sum / numOfEvens ;
     }
 }
