@@ -1,4 +1,4 @@
-package year2026.september.day3;
+package year2026.september.day03;
 
 
 /*Напишите метод, который принимает список целых чисел (List<Integer>)
