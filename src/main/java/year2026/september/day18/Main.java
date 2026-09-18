@@ -27,8 +27,7 @@ public class Main {
     static boolean check(List<String> list) {
 
         return list.stream()
-                .map(String::length)
-                .allMatch(x -> x >= 6);
+                .allMatch(x -> x.length() >= 6);
 
     }
 }
